@@ -20,6 +20,7 @@ p.add_argument('--max-line-length', '-m', type=str, default=MAX_LINE_LENGTH)
 p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR)
 p.add_argument('--input-encoding', '-i', type=str, default=INPUT_ENCODING)
 p.add_argument('--timestamp-format', '-t', type=str, default=TIMESTAMP_FORMAT)
+p.add_argument('--additional-tag', '-a', type=str, default=None)
 
 args = p.parse_args()
 if args.input_line_separator == r'\r':
@@ -42,8 +43,9 @@ while True:
             break
 
         if is_new_line:
-            sys.stdout.write('%s %s' % (
+            sys.stdout.write('%s%s %s' % (
                 time.strftime(args.timestamp_format),
+                '' if args.additional_tag is None else ' %s' % args.additional_tag,
                 line
             ))
         else:
