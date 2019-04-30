@@ -40,8 +40,29 @@ class Timezone(datetime.tzinfo):
     def dst(self, dt):
         return datetime.timedelta(0)
 
+<<<<<<< HEAD
 
 def get_timezone(name):
+=======
+p = argparse.ArgumentParser()
+p.add_argument('--max-line-length', '-m', type=str, default=MAX_LINE_LENGTH)
+p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR)
+p.add_argument('--input-encoding', '-i', type=str, default=INPUT_ENCODING)
+p.add_argument('--timestamp-format', '-t', type=str, default=TIMESTAMP_FORMAT)
+p.add_argument('--additional-tag', '-a', type=str, default=None)
+
+args = p.parse_args()
+if args.input_line_separator == r'\r':
+    args.input_line_separator = '\r'
+elif args.input_line_separator == r'\n':
+    args.input_line_separator = '\n'
+elif args.input_line_separator == r'\r\n':
+    args.input_line_separator = '\r\n'
+
+is_new_line = True
+should_decode = None
+while True:
+>>>>>>> origin/master
     try:
         name = int(name)
         offset = datetime.timedelta(minutes=name)
@@ -49,11 +70,20 @@ def get_timezone(name):
     except ValueError:
         pass
 
+<<<<<<< HEAD
     if ':' in name:
         hours, minutes = name.split(':')
         if name.startswith('-'):
             hours = hours.lstrip('-')
             minus = -1
+=======
+        if is_new_line:
+            sys.stdout.write('%s%s %s' % (
+                time.strftime(args.timestamp_format),
+                '' if args.additional_tag is None else ' %s' % args.additional_tag,
+                line
+            ))
+>>>>>>> origin/master
         else:
             minus = 1
 
