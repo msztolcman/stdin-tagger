@@ -40,29 +40,8 @@ class Timezone(datetime.tzinfo):
     def dst(self, dt):
         return datetime.timedelta(0)
 
-<<<<<<< HEAD
 
 def get_timezone(name):
-=======
-p = argparse.ArgumentParser()
-p.add_argument('--max-line-length', '-m', type=str, default=MAX_LINE_LENGTH)
-p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR)
-p.add_argument('--input-encoding', '-i', type=str, default=INPUT_ENCODING)
-p.add_argument('--timestamp-format', '-t', type=str, default=TIMESTAMP_FORMAT)
-p.add_argument('--additional-tag', '-a', type=str, default=None)
-
-args = p.parse_args()
-if args.input_line_separator == r'\r':
-    args.input_line_separator = '\r'
-elif args.input_line_separator == r'\n':
-    args.input_line_separator = '\n'
-elif args.input_line_separator == r'\r\n':
-    args.input_line_separator = '\r\n'
-
-is_new_line = True
-should_decode = None
-while True:
->>>>>>> origin/master
     try:
         name = int(name)
         offset = datetime.timedelta(minutes=name)
@@ -70,20 +49,11 @@ while True:
     except ValueError:
         pass
 
-<<<<<<< HEAD
     if ':' in name:
         hours, minutes = name.split(':')
         if name.startswith('-'):
             hours = hours.lstrip('-')
             minus = -1
-=======
-        if is_new_line:
-            sys.stdout.write('%s%s %s' % (
-                time.strftime(args.timestamp_format),
-                '' if args.additional_tag is None else ' %s' % args.additional_tag,
-                line
-            ))
->>>>>>> origin/master
         else:
             minus = 1
 
@@ -123,6 +93,8 @@ def parse_args(argv):
             'If not, please specify offset as an number of minutes or in format HH:MM. '
             'Default is "%(default)s".'
     )
+    p.add_argument('--additional-tag', '-a', type=str, default=None,
+        help='')
     p.add_argument('--version', '-v', action='version', version=prog_version)
 
     args = p.parse_args(argv)
@@ -157,8 +129,9 @@ def main():
 
             if is_new_line:
                 timestamp = datetime.datetime.now(args.timezone)
-                sys.stdout.write('%s %s' % (
+                sys.stdout.write('%s%s %s' % (
                     timestamp.strftime(args.timestamp_format),
+                    '' if args.additional_tag is None else ' %s' % args.additional_tag,
                     line
                 ))
             else:
