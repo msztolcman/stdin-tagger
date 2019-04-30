@@ -94,7 +94,7 @@ def parse_args(argv):
             'Default is "%(default)s".'
     )
     p.add_argument('--additional-tag', '-a', type=str, default=None,
-        help='')
+        help='Additional tag between timestamp and input line. Default: empty')
     p.add_argument('--version', '-v', action='version', version=prog_version)
 
     args = p.parse_args(argv)
