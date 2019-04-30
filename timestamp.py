@@ -16,6 +16,8 @@ except ImportError:
     class UnknownTimeZoneError(Exception): pass
 
 
+__version__ = '1.0.0'
+
 MAX_LINE_LENGTH = 4096
 INPUT_LINE_SEPARATOR = os.linesep
 OUTPUT_LINE_SEPARATOR = os.linesep
@@ -68,12 +70,30 @@ def get_timezone(name):
 
 
 def parse_args(argv):
-    p = argparse.ArgumentParser()
+    prog_version = "%%(prog)s %s" % __version__
+
+    usage = 'Read standard input, decorate it with timestamp and optional tag, ' \
+            'and print decorated line to standard output'
+
+    p = argparse.ArgumentParser(usage=usage)
     p.add_argument('--max-line-length', '-m', type=str, default=MAX_LINE_LENGTH)
-    p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR)
-    p.add_argument('--input-encoding', '-i', type=str, default=INPUT_ENCODING)
-    p.add_argument('--timestamp-format', '-t', type=str, default=TIMESTAMP_FORMAT)
-    p.add_argument('--timezone', '-z', type=str, default=TIMESTAMP_TIMEZONE)
+    p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR,
+        help='Use INPUT_LINE_SEPARATOR as line separator')
+    p.add_argument('--input-encoding', '-i', type=str, default=INPUT_ENCODING,
+        help='Decode input from INPUT_ENCODING')
+    p.add_argument('--timestamp-format', '-t', type=str, default=TIMESTAMP_FORMAT,
+        help=
+            'Specify format of timestamp. Please look at https://docs.python.org/3/library/datetime.html'
+            '?highlight=time%%20strftime#strftime-and-strptime-behavior for available formats. '
+            'Default is "%(default)s".'
+    )
+    p.add_argument('--timezone', '-z', type=str, default=TIMESTAMP_TIMEZONE,
+        help=
+            'Timezone used for timestamps. If pytz module is available, you can use timezones names. '
+            'If not, please specify offset as an number of minutes or in format HH:MM. '
+            'Default is "%(default)s".'
+    )
+    p.add_argument('--version', '-v', action='version', version=prog_version)
 
     args = p.parse_args(argv)
     if args.input_line_separator == r'\r':
