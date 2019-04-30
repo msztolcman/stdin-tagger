@@ -13,7 +13,8 @@ try:
     UnknownTimeZoneError = pytz.exceptions.UnknownTimeZoneError
 except ImportError:
     pytz = None
-    class UnknownTimeZoneError(Exception): pass
+    class UnknownTimeZoneError(Exception):
+        pass
 
 
 __version__ = '1.0.0'
@@ -75,6 +76,7 @@ def parse_args(argv):
     usage = 'Read standard input, decorate it with timestamp and optional tag, ' \
             'and print decorated line to standard output'
 
+    # pylint: disable=invalid-name, bad-continuation
     p = argparse.ArgumentParser(usage=usage)
     p.add_argument('--max-line-length', '-m', type=str, default=MAX_LINE_LENGTH)
     p.add_argument('--input-line-separator', '-l', type=str, default=INPUT_LINE_SEPARATOR,
