@@ -16,7 +16,7 @@ except ImportError:
     class UnknownTimeZoneError(Exception): pass
 
 
-MAX_LINE_LENGTH = 1024
+MAX_LINE_LENGTH = 4096
 INPUT_LINE_SEPARATOR = os.linesep
 OUTPUT_LINE_SEPARATOR = os.linesep
 INPUT_ENCODING = 'utf-8'
