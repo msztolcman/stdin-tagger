@@ -24,7 +24,7 @@ INPUT_LINE_SEPARATOR = os.linesep
 OUTPUT_LINE_SEPARATOR = os.linesep
 INPUT_ENCODING = 'utf-8'
 TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S.%f'
-TIMESTAMP_TIMEZONE = 'UTC'
+TIMESTAMP_TIMEZONE = None
 
 
 class Timezone(datetime.tzinfo):
@@ -43,6 +43,9 @@ class Timezone(datetime.tzinfo):
 
 
 def get_timezone(name):
+    if not name:
+        return
+
     try:
         name = int(name)
         offset = datetime.timedelta(minutes=name)
@@ -93,7 +96,7 @@ def parse_args(argv):
         help=
             'Timezone used for timestamps. If pytz module is available, you can use timezones names. '
             'If not, please specify offset as an number of minutes or in format HH:MM. '
-            'Default is "%(default)s".'
+            'Default is local timezone.'
     )
     p.add_argument('--additional-tag', '-a', type=str, default=None,
         help='Additional tag between timestamp and input line. Default: empty')
