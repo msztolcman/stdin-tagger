@@ -44,7 +44,7 @@ class Timezone(datetime.tzinfo):
 
 def get_timezone(name):
     if not name:
-        return
+        return None
 
     try:
         name = int(name)
