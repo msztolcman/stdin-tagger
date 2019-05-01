@@ -12,7 +12,7 @@ If you like this tool, just [say thanks](https://saythanks.io/to/msztolcman).
 Current stable version
 ----------------------
 
-1.0.0
+0.9.9
 
 Python version
 --------------

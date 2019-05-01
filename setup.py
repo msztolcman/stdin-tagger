@@ -10,7 +10,7 @@ with open(path.join(BASE_DIR, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='stdin-tagger',
-    version='1.0.0',
+    version='0.9.9',
     description='decorate stdin with current timestamp and optional tag',
     long_description=long_description,
     long_description_content_type='text/markdown',
