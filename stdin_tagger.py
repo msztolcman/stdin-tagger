@@ -17,7 +17,7 @@ except ImportError:
         pass
 
 
-__version__ = '1.0.0'
+__version__ = '1.1.0'
 
 MAX_LINE_LENGTH = 4096
 INPUT_LINE_SEPARATOR = os.linesep
