@@ -1,6 +1,6 @@
 from codecs import open
 from os import path
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 BASE_DIR = path.abspath(path.dirname(__file__))
@@ -36,7 +36,7 @@ setup(
     ],
     install_requires=['pytz'],
     py_modules=['stdin_tagger'],
-    package_data={'': ['LICENSE']},
+    package_data={'': ['LICENSE', 'README.md']},
 
     keywords='timestamp decorate tag stdin',
 
