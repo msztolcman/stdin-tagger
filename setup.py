@@ -35,9 +35,8 @@ setup(
         'Programming Language :: Python :: 3.8',
     ],
     install_requires=['pytz'],
-    packages=find_packages(),
+    py_modules=['stdin_tagger'],
     package_data={'': ['LICENSE']},
-    include_package_data=True,
 
     keywords='timestamp decorate tag stdin',
 
