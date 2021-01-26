@@ -7,7 +7,7 @@ stdin-tagger
 
 `stdin-tagger` just decorate stdin with current timestamp and optional tag.
 
-If you like this tool, just [say thanks](https://saythanks.io/to/msztolcman).
+If you like this tool, just [say thanks](https://saythanks.io/to/marcin%40urzenia.net).
 
 Current stable version
 ----------------------
