@@ -3,7 +3,7 @@ stdin-tagger
 
 [![stdin-tagger version](https://img.shields.io/pypi/v/stdin-tagger.svg)](https://pypi.python.org/pypi/stdin-tagger)
 [![stdin-tagger python compatibility](https://img.shields.io/pypi/pyversions/stdin-tagger.svg)](https://pypi.python.org/pypi/stdin-tagger)
-[![say thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/msztolcman)
+[![say thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/marcin%40urzenia.net)
 
 `stdin-tagger` just decorate stdin with current timestamp and optional tag.
 
